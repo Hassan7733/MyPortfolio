@@ -1,0 +1,7 @@
+.slow-arrow {
+  --animate-duration: 4s; /* default is 1s */
+}
+
+.slow-animation {
+    --animate-duration: 2s;
+}

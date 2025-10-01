@@ -1,0 +1,14 @@
+<div class="flex flex-col gap-3">
+    <span class="font-normal text-xl text-primary">Design Skills</span>
+<div class="flex flex-wrap gap-3">
+@for (skill of designSkills; track skill) {
+    <span class="skill-default">{{skill.skill}}</span>
+}
+</div>
+<span class="font-normal text-xl text-primary">Technical Skills</span>
+<div class="flex flex-wrap gap-3">
+    @for (skill of technicalSkills; track skill) {
+        <span class="skill-outline">{{skill.skill}}</span>
+    }
+</div>
+</div>

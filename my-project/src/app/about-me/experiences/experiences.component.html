@@ -1,0 +1,16 @@
+<h4 class="font-normal text-xl text-primary">Experiences & Journey</h4>
+<div class="flex flex-col gap-3">
+    @for (job of Experiences; track $index) {
+<div class="experiencecard">
+    <div class="bg-secondary p-4 rounded-lg flex items-center">{{job.year}}</div>
+    <div class="flex flex-col">
+        <span class="font-normal text-lg text-primary">{{job.title}}</span>
+        <span class="font-normal text-base text-primary">{{job.companyName}}</span>
+        <p class="font-normal text-sm text-primary-dark">{{job.description}}</p>
+    </div>
+    <div>
+        <img [src]=job.logo [alt]=job.title>
+    </div>
+</div>
+}
+</div>

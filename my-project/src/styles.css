@@ -1,2 +1,40 @@
 /* You can add global styles to this file, and also import other style files */
 @import "tailwindcss";
+
+@theme {
+  --color-primary: #2D2D83; /* Default */
+  --color-primary-dark: #0D0D2D; /* Hover */
+  --color-primary-light: #7171A7; /* Light */
+  --color-secondary: #CACACD; /* Light */
+  --font-roboto: "Roboto", sans-serif;
+}
+
+@layer base {
+  body {
+    @apply font-roboto;
+  }
+}
+
+@utility btn-primary {
+  @apply px-4 py-1 rounded-lg bg-primary text-white font-normal
+         shadow-md hover:bg-primary-dark cursor-pointer active:scale-95 transition;
+}
+
+@utility btn-outline {
+  @apply px-4 py-1 rounded-lg border border-primary text-primary
+         hover:bg-primary-light cursor-pointer hover:text-white transition;
+}
+@utility skill-outline {
+  @apply border-1 border border-secondary px-6 py-2 rounded-full text-sm hover:shadow-lg;
+}
+@utility skill-default {
+  @apply  bg-secondary px-6 py-2 rounded-full text-sm hover:shadow-lg;
+}
+
+@utility icon {
+  @apply fill-zinc-400 hover:fill-primary transition-all
+}
+
+@utility experiencecard {
+  @apply flex gap-3 p-5 border-primary border rounded-lg hover:bg-gray-100 transition duration-300
+}
