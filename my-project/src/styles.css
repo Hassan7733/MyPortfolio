@@ -5,7 +5,8 @@
   --color-primary: #2D2D83; /* Default */
   --color-primary-dark: #0D0D2D; /* Hover */
   --color-primary-light: #7171A7; /* Light */
-  --color-secondary: #CACACD; /* Light */
+  --color-secondary: #E9E9E9; /* Light */
+  --color-secondary-dark: #CACACD; /* Dark */
   --font-roboto: "Roboto", sans-serif;
 }
 
@@ -25,10 +26,10 @@
          hover:bg-primary-light cursor-pointer hover:text-white transition;
 }
 @utility skill-outline {
-  @apply border-1 border border-secondary px-6 py-2 rounded-full text-sm hover:shadow-lg;
+  @apply border-1 border border-secondary px-4 py-2 rounded-full text-sm hover:shadow-lg hover:bg-secondary text-primary-dark transition-all;
 }
 @utility skill-default {
-  @apply  bg-secondary px-6 py-2 rounded-full text-sm hover:shadow-lg;
+  @apply  bg-secondary text-primary-dark px-4 py-2 rounded-full text-sm hover:shadow-lg hover:bg-secondary-dark text-primary-dark transition-all;
 }
 
 @utility icon {
@@ -36,5 +37,5 @@
 }
 
 @utility experiencecard {
-  @apply flex gap-3 p-5 border-primary border rounded-lg hover:bg-gray-100 transition duration-300
+  @apply flex gap-3 p-5 border-primary border rounded-lg hover:bg-gray-100 transition duration-300 h-40
 }
