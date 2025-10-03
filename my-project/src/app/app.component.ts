@@ -5,11 +5,12 @@ import { HeroBannerComponent } from "./hero-banner/hero-banner.component";
 import { AboutMeComponent } from "./about-me/about-me.component";
 import { ExternalLinksComponent } from "./external-links/external-links.component";
 import { ContactComponent } from "./contact/contact.component";
+import { WorksComponent } from "./works/works.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NavBarComponent, HeroBannerComponent, AboutMeComponent, ExternalLinksComponent, ContactComponent],
+  imports: [RouterOutlet, NavBarComponent, HeroBannerComponent, AboutMeComponent, ExternalLinksComponent, ContactComponent, WorksComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
