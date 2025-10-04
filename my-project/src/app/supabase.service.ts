@@ -50,4 +50,15 @@ export class SupabaseService {
     }
     return data;
   }
+  async getProjects() {
+    const { data, error } = await this.supabase
+      .from('Projects')
+      .select('*').order('id', { ascending: true });
+
+    if (error) {
+      console.error('Error fetching Projects:', error.message);
+      return [];
+    }
+    return data;
+  }
 }

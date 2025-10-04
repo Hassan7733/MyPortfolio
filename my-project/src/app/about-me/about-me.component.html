@@ -1,15 +1,23 @@
-<div class="p-2 mx-40 flex flex-col items-center gap-8">
-    <div class="flex flex-col items-center">
-<h2 class="font-normal text-4xl text-primary">About Me</h2>
-<p class="font-normal text-xl text-primary-dark">I'm passionate about creating meaningful digital experiences that bridge the gap between design and technology.</p>
-</div>
-<div class="flex gap-4">
-    <div class="w-1/2">
-        <app-bio></app-bio>
-        <app-skills></app-skills>
+<section class="px-5 md:px-20 lg:px-40 py-10 flex flex-col items-center gap-10">
+  <!-- Title -->
+  <div class="text-center space-y-2">
+    <h2 class="font-normal text-3xl md:text-4xl text-primary">About Me</h2>
+    <p class="font-normal text-base md:text-lg text-primary-dark max-w-2xl">
+      I'm passionate about creating meaningful digital experiences that bridge the gap between design and technology.
+    </p>
+  </div>
+
+  <!-- Content -->
+  <div class="flex flex-col md:flex-row items-start justify-center gap-10 w-full">
+    <!-- Left Side -->
+    <div class="w-full md:w-1/2 space-y-8">
+      <app-bio></app-bio>
+      <app-skills></app-skills>
     </div>
-    <div class="w-1/2">
-        <app-experiences></app-experiences>
+
+    <!-- Right Side -->
+    <div class="w-full md:w-1/2">
+      <app-experiences></app-experiences>
     </div>
-</div>
-    </div>
+  </div>
+</section>

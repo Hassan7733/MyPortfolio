@@ -1,14 +1,15 @@
-<div class="flex flex-col gap-3">
-    <span class="font-normal text-xl text-primary">Design Skills</span>
-<div class="flex flex-wrap gap-3">
-@for (skill of designSkills; track skill) {
-    <span class="skill-default">{{skill.skill}}</span>
-}
-</div>
-<span class="font-normal text-xl text-primary">Technical Skills</span>
-<div class="flex flex-wrap gap-3">
-    @for (skill of technicalSkills; track skill) {
-        <span class="skill-outline">{{skill.skill}}</span>
+<div class="flex flex-col gap-6 animate__animated animate__backInLeft">
+  <span class="font-semibold text-xl text-primary">Design Skills</span>
+  <div class="flex flex-wrap gap-2 sm:gap-3">
+    @for (skill of designSkills; track skill) {
+      <span class="skill-default text-sm sm:text-base">{{skill.skill}}</span>
     }
-</div>
+  </div>
+
+  <span class="font-semibold text-xl text-primary">Technical Skills</span>
+  <div class="flex flex-wrap gap-2 sm:gap-3">
+    @for (skill of technicalSkills; track skill) {
+      <span class="skill-outline text-sm sm:text-base">{{skill.skill}}</span>
+    }
+  </div>
 </div>

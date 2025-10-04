@@ -1,33 +1,19 @@
- <div class="flex flex-col items-center">
-<h2 class="font-normal text-4xl text-primary">Portfolio & Work</h2>
-<p class="font-normal text-xl text-primary-dark">A selection of projects showcasing my experience in UI/UX design and frontend development across various industries and platforms.</p>
-</div>
-<div class="flex gap-4 flex-wrap justify-center">
-    <div class="w-1/4">
-        <app-project></app-project>
-    </div>
-    <div class="w-1/4">
-        <app-project></app-project>
-    </div>
-    <div class="w-1/4">
-        <app-project></app-project>
-    </div>
-    <div class="w-1/4">
-        <app-project></app-project>
-    </div>
-    <div class="w-1/4">
-        <app-project></app-project>
-    </div>
-    <div class="w-1/4">
-        <app-project></app-project>
-    </div>
-    <div class="w-1/4">
-        <app-project></app-project>
-    </div>
-    <div class="w-1/4">
-        <app-project></app-project>
-    </div>
-    <div class="w-1/4">
-        <app-project></app-project>
-    </div>
+<div class="flex flex-col items-center gap-8 px-4 md:px-16 lg:px-32 py-10">
+  <!-- Section Title -->
+  <div class="flex flex-col items-center text-center max-w-3xl">
+    <h2 class="font-normal text-3xl md:text-4xl text-primary">Portfolio & Work</h2>
+    <p class="font-normal text-base md:text-lg text-primary-dark mt-2">
+      A selection of projects showcasing my experience in UI/UX design
+      and frontend development across various industries and platforms.
+    </p>
+  </div>
+
+  <!-- Projects Grid -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center w-full">
+    @for (prj of projects; track $index) {
+      <div class="w-full sm:w-[90%] lg:w-[95%]">
+        <app-project [project]="prj"></app-project>
+      </div>
+    }
+  </div>
 </div>
