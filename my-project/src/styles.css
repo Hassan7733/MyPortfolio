@@ -8,6 +8,12 @@
   --color-secondary: #E9E9E9; /* Light */
   --color-secondary-dark: #CACACD; /* Dark */
   --font-roboto: "Roboto", sans-serif;
+  --breakpoint-*: initial; /* Resets all default breakpoints */
+      --breakpoint-sm: 480px;
+      --breakpoint-md: 768px;
+      --breakpoint-lg: 1280px;
+      --breakpoint-xl: 1366px;
+      --breakpoint-2xl: 1536px;
 }
 
 @layer base {
