@@ -1,10 +1,11 @@
 <div class="flex flex-col gap-3 border border-secondary rounded-xl overflow-hidden shadow-sm hover:shadow-md transition duration-300 h-auto md:h-[550px] bg-white">
   <!-- Image -->
-  <div class="overflow-hidden h-48 md:h-60">
+  <a class="overflow-hidden h-48 md:h-60" [href]="project.links"
+       target="_blank">
     <img [src]="project.images"
          class="w-full h-full object-cover hover:scale-[1.2] transition duration-500 cursor-pointer"
          alt="">
-  </div>
+  </a>
 
   <!-- Content -->
   <div class="flex flex-col gap-3 px-4 py-5 flex-grow">

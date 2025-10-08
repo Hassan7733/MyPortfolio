@@ -8,5 +8,10 @@ import { Component } from '@angular/core';
   styleUrl: './hero-banner.component.css'
 })
 export class HeroBannerComponent {
-
+scrollTo(sectionId: string) {
+    const el = document.getElementById(sectionId);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
 }
