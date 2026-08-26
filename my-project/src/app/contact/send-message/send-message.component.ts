@@ -1,23 +1,33 @@
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 import emailjs from 'emailjs-com';
 
 @Component({
   selector: 'app-send-message',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './send-message.component.html',
   styleUrl: './send-message.component.css'
 })
 export class SendMessageComponent {
-formData = {
+  formData = {
     name: '',
     email: '',
     subject: '',
     message: ''
   };
 
-  sendEmail() {
+  status: 'idle' | 'sending' | 'success' | 'error' = 'idle';
+
+  sendEmail(form: NgForm) {
+    // Error prevention: block submit and surface field errors if invalid.
+    if (form.invalid) {
+      form.control.markAllAsTouched();
+      return;
+    }
+
+    this.status = 'sending';
 
     emailjs.send(
       'service_6qzn9eh',
@@ -30,14 +40,14 @@ formData = {
       },
       's9VyFoEeQxGEaLmcI'
     )
-    .then(() => {
-      alert('✅ Message sent successfully!');
-      this.formData = { name: '', email: '', subject: '', message: '' }; // clear form
-    })
-    .catch((error) => {
-      console.error('FAILED...', error);
-      alert('❌ Failed to send message. Please try again.');
-    });
+      .then(() => {
+        this.status = 'success';
+        this.formData = { name: '', email: '', subject: '', message: '' };
+        form.resetForm();
+      })
+      .catch((error) => {
+        console.error('FAILED...', error);
+        this.status = 'error';
+      });
   }
 }
-

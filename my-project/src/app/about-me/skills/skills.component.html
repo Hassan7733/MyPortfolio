@@ -2,14 +2,14 @@
   <span class="font-semibold text-xl text-primary">Design Skills</span>
   <div class="flex flex-wrap gap-2 sm:gap-3">
     @for (skill of designSkills; track skill) {
-      <span class="skill-default text-sm sm:text-base">{{skill.skill}}</span>
+      <span class="skill-default text-sm text-primary">{{skill.skill}}</span>
     }
   </div>
 
   <span class="font-semibold text-xl text-primary">Technical Skills</span>
   <div class="flex flex-wrap gap-2 sm:gap-3">
     @for (skill of technicalSkills; track skill) {
-      <span class="skill-outline text-sm sm:text-base">{{skill.skill}}</span>
+      <span class="skill-outline text-sm text-primary">{{skill.skill}}</span>
     }
   </div>
 </div>

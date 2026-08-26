@@ -1,4 +1,4 @@
-<div class="flex flex-col gap-3 border border-secondary rounded-xl overflow-hidden shadow-sm hover:shadow-md transition duration-300 h-auto md:h-[550px] bg-white">
+<div class="flex flex-col gap-3 border border-secondary rounded-xl overflow-hidden shadow-sm hover:shadow-md transition duration-300 h-auto md:h-[550px] bg-surface">
   <!-- Image -->
   <a class="overflow-hidden h-48 md:h-60" [href]="project.links"
        target="_blank">
@@ -12,7 +12,7 @@
     <!-- Title + Type -->
     <div class="flex flex-wrap gap-2 items-center">
       <span class="text-primary font-semibold text-lg md:text-xl">{{project.title}}</span>
-      <span class="skill-default text-xs md:text-sm"
+      <span class="skill-default !text-primary-dark text-xs md:text-sm"
             [ngClass]="{
               'bg-green-200': project.type === 'UX/UI & Development',
               'bg-blue-200': project.type === 'UX/UI Design'
@@ -22,7 +22,7 @@
     </div>
 
     <!-- Description -->
-    <p class="text-primary-dark text-sm md:text-base leading-relaxed">
+    <p class="text-ink text-sm text-base leading-relaxed">
       {{project.description}}
     </p>
 
@@ -34,7 +34,7 @@
     </div>
 
     <!-- Button -->
-    <a class="btn-primary flex justify-center mt-auto text-sm md:text-base"
+    <a class="btn-primary flex justify-center mt-auto text-sm "
        [href]="project.links"
        target="_blank"
        rel="noopener noreferrer">

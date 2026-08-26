@@ -2,7 +2,7 @@
   <h4 class="font-semibold text-lg md:text-xl text-primary">Experiences & Journey</h4>
   <div class="flex flex-col gap-6">
     @for (job of Experiences; track $index) {
-      <div class="experiencecard animate__animated animate__backInRight flex flex-col md:flex-row items-center md:items-start gap-4 md:gap-6 bg-white shadow-sm rounded-lg p-4 md:p-6">
+      <div class="experiencecard animate__animated animate__backInRight flex flex-col md:flex-row items-center md:items-start gap-4 md:gap-6 bg-surface shadow-sm rounded-lg p-4 md:p-6">
         <!-- Year -->
         <div class="bg-primary text-white text-sm font-medium p-3 md:p-4 rounded-lg flex flex-col items-center justify-center w-20 md:w-28 h-20 md:h-28">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 36 36">
@@ -14,8 +14,8 @@
         <!-- Info -->
         <div class="flex flex-col gap-1 text-center md:text-left">
           <span class="font-medium text-base md:text-lg text-primary">{{job.title}}</span>
-          <span class="font-normal text-sm md:text-base text-primary">{{job.companyName}}</span>
-          <p class="font-normal text-xs md:text-sm text-primary-dark leading-relaxed">{{job.description}}</p>
+          <span class="font-normal text-sm text-base text-primary">{{job.companyName}}</span>
+          <p class="font-normal text-xs md:text-sm text-ink leading-relaxed">{{job.description}}</p>
         </div>
 
         <!-- Logo -->
