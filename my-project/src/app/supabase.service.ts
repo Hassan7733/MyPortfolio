@@ -61,4 +61,18 @@ export class SupabaseService {
     }
     return data;
   }
+
+  async getProjectBySlug(slug: string) {
+    const { data, error } = await this.supabase
+      .from('Projects')
+      .select('*')
+      .eq('slug', slug)
+      .single();
+
+    if (error) {
+      console.error('Error fetching project by slug:', error.message);
+      return null;
+    }
+    return data;
+  }
 }

@@ -1,18 +1,22 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 interface proj {
-    title: string;
-    description: string;
-    type: string;
-    usedTech: [];
-    images: [];
-    links: [];
+  id: number;
+  title: string;
+  description: string;
+  type: string;
+  usedTech: any[];
+  images: string[];
+  links: string[];
+  slug?: string;
+  caseStudy?: any;
 }
 @Component({
   selector: 'app-project',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './project.component.html',
   styleUrl: './project.component.css',
 })

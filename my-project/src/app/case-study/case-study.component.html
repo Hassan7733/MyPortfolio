@@ -1,0 +1,175 @@
+<div class="mt-20 text-ink">
+  @if (loading) {
+    <div class="min-h-[60vh] flex items-center justify-center text-ink-muted">Loading…</div>
+  } @else if (notFound) {
+    <div class="min-h-[60vh] flex flex-col items-center justify-center gap-4 px-4 text-center">
+      <p class="text-xl text-ink">This case study isn't available.</p>
+      <a routerLink="/" fragment="works" class="btn-primary">Back to portfolio</a>
+    </div>
+  } @else if (project && cs) {
+    <!-- Back link -->
+    <div class="max-w-5xl mx-auto px-4 md:px-8 pt-6">
+      <a routerLink="/" fragment="works"
+         class="text-ink-muted hover:text-primary text-sm inline-flex items-center gap-1 transition-colors">
+        ← Back to portfolio
+      </a>
+    </div>
+
+    <!-- Header -->
+    <header class="max-w-5xl mx-auto px-4 md:px-8 pt-6 pb-8">
+      <span class="skill-default !text-primary-dark text-xs"
+            [ngClass]="{
+              'bg-green-200': project.type === 'UX/UI & Development',
+              'bg-blue-200': project.type === 'UX/UI Design'
+            }">
+        {{ project.type }}
+      </span>
+      <h1 class="text-3xl md:text-5xl font-semibold text-primary mt-4">{{ project.title }}</h1>
+      @if (cs.tagline) {
+        <p class="text-lg md:text-xl text-ink-muted mt-3 max-w-3xl">{{ cs.tagline }}</p>
+      }
+
+      <!-- Meta row -->
+      @if (cs.role || cs.timeline || cs.client || cs.tools?.length) {
+        <div class="flex flex-wrap gap-x-10 gap-y-4 mt-8 border-t border-line pt-6">
+          @if (cs.role) {
+            <div>
+              <p class="text-xs uppercase tracking-wide text-ink-muted">Role</p>
+              <p class="font-medium mt-1">{{ cs.role }}</p>
+            </div>
+          }
+          @if (cs.timeline) {
+            <div>
+              <p class="text-xs uppercase tracking-wide text-ink-muted">Timeline</p>
+              <p class="font-medium mt-1">{{ cs.timeline }}</p>
+            </div>
+          }
+          @if (cs.client) {
+            <div>
+              <p class="text-xs uppercase tracking-wide text-ink-muted">Client</p>
+              <p class="font-medium mt-1">{{ cs.client }}</p>
+            </div>
+          }
+          @if (cs.tools?.length) {
+            <div>
+              <p class="text-xs uppercase tracking-wide text-ink-muted">Tools</p>
+              <p class="font-medium mt-1">{{ cs.tools!.join(', ') }}</p>
+            </div>
+          }
+        </div>
+      }
+    </header>
+
+    <!-- Hero image -->
+    @if (cs.heroImage) {
+      <div class="max-w-6xl mx-auto px-4 md:px-8">
+        <img [src]="cs.heroImage" [alt]="project.title"
+             class="w-full rounded-2xl border border-line shadow-sm" />
+      </div>
+    }
+
+    <!-- Intro sections -->
+    @if (cs.overview || cs.problem || cs.objective || cs.users) {
+      <div class="max-w-3xl mx-auto px-4 md:px-8 py-12 flex flex-col gap-12">
+        @if (cs.overview) {
+          <section><h2 class="cs-h2">Overview</h2><p class="cs-p mt-3">{{ cs.overview }}</p></section>
+        }
+        @if (cs.problem) {
+          <section><h2 class="cs-h2">The problem</h2><p class="cs-p mt-3">{{ cs.problem }}</p></section>
+        }
+        @if (cs.objective) {
+          <section><h2 class="cs-h2">Business objective</h2><p class="cs-p mt-3">{{ cs.objective }}</p></section>
+        }
+        @if (cs.users) {
+          <section><h2 class="cs-h2">Who it's for</h2><p class="cs-p mt-3">{{ cs.users }}</p></section>
+        }
+      </div>
+    }
+
+    <!-- Process -->
+    @if (cs.process?.length) {
+      <div class="max-w-5xl mx-auto px-4 md:px-8 pb-4">
+        <h2 class="cs-h2 text-center mb-10">Process</h2>
+        <div class="flex flex-col gap-14">
+          @for (step of cs.process; track $index) {
+            <div class="flex flex-col gap-4">
+              <div class="flex items-center gap-3">
+                <span class="w-8 h-8 shrink-0 rounded-full bg-primary text-white flex items-center justify-center text-sm font-semibold">{{ $index + 1 }}</span>
+                <h3 class="text-xl font-semibold text-primary">{{ step.phase }}</h3>
+              </div>
+              <p class="cs-p">{{ step.body }}</p>
+              @if (step.images?.length) {
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
+                  @for (img of step.images; track $index) {
+                    <img [src]="img" alt="" class="w-full rounded-xl border border-line" />
+                  }
+                </div>
+              }
+            </div>
+          }
+        </div>
+      </div>
+    }
+
+    <!-- Key screens -->
+    @if (cs.screens?.length) {
+      <div class="max-w-6xl mx-auto px-4 md:px-8 py-12">
+        <h2 class="cs-h2 text-center mb-10">Key screens</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          @for (s of cs.screens; track $index) {
+            <figure class="flex flex-col gap-2">
+              <img [src]="s.image" [alt]="s.caption || ''"
+                   class="w-full rounded-xl border border-line shadow-sm" />
+              @if (s.caption) {
+                <figcaption class="text-sm text-ink-muted text-center">{{ s.caption }}</figcaption>
+              }
+            </figure>
+          }
+        </div>
+      </div>
+    }
+
+    <!-- Design decisions -->
+    @if (cs.decisions?.length) {
+      <div class="max-w-3xl mx-auto px-4 md:px-8 pb-12">
+        <h2 class="cs-h2 mb-6">Design decisions</h2>
+        <div class="flex flex-col gap-6">
+          @for (d of cs.decisions; track $index) {
+            <div class="border-l-2 border-primary pl-4">
+              <h3 class="font-semibold text-lg text-ink">{{ d.title }}</h3>
+              <p class="cs-p mt-1">{{ d.body }}</p>
+            </div>
+          }
+        </div>
+      </div>
+    }
+
+    <!-- Outcome + reflection -->
+    @if (cs.outcome || cs.reflection) {
+      <div class="max-w-3xl mx-auto px-4 md:px-8 pb-12 flex flex-col gap-12">
+        @if (cs.outcome) {
+          <section><h2 class="cs-h2">Outcome &amp; impact</h2><p class="cs-p mt-3">{{ cs.outcome }}</p></section>
+        }
+        @if (cs.reflection) {
+          <section><h2 class="cs-h2">Reflection</h2><p class="cs-p mt-3">{{ cs.reflection }}</p></section>
+        }
+      </div>
+    }
+
+    <!-- CTA -->
+    <div class="bg-muted">
+      <div class="max-w-3xl mx-auto px-4 md:px-8 py-12 flex flex-col items-center text-center gap-4">
+        <h2 class="text-2xl font-semibold text-primary">Want to see it in action?</h2>
+        <div class="flex gap-3 flex-wrap justify-center">
+          @if (project.links && project.links[0]) {
+            <a class="btn-primary" [href]="project.links[0]" target="_blank" rel="noopener noreferrer">Visit live site</a>
+          }
+          <a class="btn-outline" routerLink="/" fragment="works">Back to portfolio</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="w-full bg-primary-dark text-white p-8 flex justify-center md:text-lg text-sm">© 2025 Hassan Gamal - UX/UI Designer & Frontend Developer. All rights reserved.</div>
+  }
+</div>
