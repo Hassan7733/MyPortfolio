@@ -1,11 +1,19 @@
 <div class="flex flex-col gap-3 border border-secondary rounded-xl overflow-hidden shadow-sm hover:shadow-md transition duration-300 h-auto md:h-[550px] bg-surface">
   <!-- Image -->
-  <a class="overflow-hidden h-48 md:h-60" [href]="project.links[0]"
-       target="_blank" rel="noopener noreferrer">
-    <img [src]="project.images[0]"
-         class="w-full h-full object-cover hover:scale-[1.2] transition duration-500 cursor-pointer"
-         [alt]="project.title">
-  </a>
+  @if (project.links && project.links[0]) {
+    <a class="overflow-hidden h-48 md:h-60" [href]="project.links[0]"
+         target="_blank" rel="noopener noreferrer">
+      <img [src]="project.images[0]"
+           class="w-full h-full object-cover hover:scale-[1.2] transition duration-500 cursor-pointer"
+           [alt]="project.title">
+    </a>
+  } @else {
+    <div class="overflow-hidden h-48 md:h-60">
+      <img [src]="project.images[0]"
+           class="w-full h-full object-cover hover:scale-[1.1] transition duration-500"
+           [alt]="project.title">
+    </div>
+  }
 
   <!-- Content -->
   <div class="flex flex-col gap-3 px-4 py-5 flex-grow">
@@ -35,12 +43,14 @@
 
     <!-- Buttons -->
     <div class="flex gap-2 mt-auto">
-      <a class="btn-outline flex-1 flex justify-center text-sm"
-         [href]="project.links[0]"
-         target="_blank"
-         rel="noopener noreferrer">
-        Live Site
-      </a>
+      @if (project.links && project.links[0]) {
+        <a class="btn-outline flex-1 flex justify-center text-sm"
+           [href]="project.links[0]"
+           target="_blank"
+           rel="noopener noreferrer">
+          Live Site
+        </a>
+      }
       @if (project.caseStudy && project.slug) {
         <a class="btn-primary flex-1 flex justify-center text-sm"
            [routerLink]="['/case-study', project.slug]">

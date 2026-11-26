@@ -53,7 +53,9 @@ export class SupabaseService {
   async getProjects() {
     const { data, error } = await this.supabase
       .from('Projects')
-      .select('*').order('id', { ascending: true });
+      .select('*')
+      .eq('hidden', false)
+      .order('id', { ascending: true });
 
     if (error) {
       console.error('Error fetching Projects:', error.message);
